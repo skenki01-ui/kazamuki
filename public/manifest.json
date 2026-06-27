@@ -1,0 +1,25 @@
+{
+  "name": "かざむき",
+  "short_name": "かざむき",
+  "description": "風が今日の一枚を選ぶ、静かなカードアプリ。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ead08c",
+  "theme_color": "#d3a94f",
+  "icons": [
+    {
+      "src": "/icons.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
