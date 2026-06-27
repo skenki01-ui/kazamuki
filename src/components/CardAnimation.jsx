@@ -24,7 +24,7 @@ const AUTO_DURATIONS = {
   shuffle: 1800,
 };
 
-const HISOHISO_URL = "https://hisohiso.vercel.app";
+const HISOHISO_URL = "https://hisohiso.vercel.app/chat/free";
 
 const windTitles = {
   spread: "22枚のカードを広げています",
