@@ -1,0 +1,110 @@
+.card-grid {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  padding-top: 20px;
+}
+
+.tarot-mini-card {
+  height: 92px;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #fffdf4, #efe2bf);
+  border: 1px solid rgba(212, 175, 55, .8);
+  color: #1f2937;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 12px 28px rgba(0,0,0,.25);
+
+  transform:
+    translate(var(--x), var(--y))
+    rotate(var(--r));
+
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-origin: center;
+  transition:
+    background .6s,
+    color .6s,
+    border .6s,
+    transform .8s;
+}
+
+.card-symbol{
+  font-size:24px;
+}
+
+.card-name{
+  margin-top:6px;
+  font-size:10px;
+  white-space:nowrap;
+}
+
+.card-back-mark{
+  font-size:26px;
+}
+
+.card-grid.wind .tarot-mini-card{
+  animation:windSpin var(--spin-speed) linear infinite;
+}
+
+.card-grid.flip .tarot-mini-card{
+
+  animation:none;
+
+  transform:
+    translate(var(--x), var(--y))
+    rotateY(180deg)
+    rotate(var(--r));
+
+  background:
+    linear-gradient(
+      145deg,
+      #15314d,
+      #27496d
+    );
+
+  color:#f8f4e6;
+
+  border:1px solid rgba(255,255,255,.18);
+
+  transition-delay:var(--delay);
+}
+
+@keyframes windSpin{
+
+  0%{
+    transform:
+      translate(var(--x),var(--y))
+      rotate(var(--r));
+  }
+
+  25%{
+    transform:
+      translate(calc(var(--x) + 5px),calc(var(--y) - 6px))
+      rotate(calc(var(--r) + 180deg));
+  }
+
+  50%{
+    transform:
+      translate(calc(var(--x) - 4px),calc(var(--y) + 5px))
+      rotate(calc(var(--r) + 360deg));
+  }
+
+  75%{
+    transform:
+      translate(calc(var(--x) + 6px),calc(var(--y) - 2px))
+      rotate(calc(var(--r) + 540deg));
+  }
+
+  100%{
+    transform:
+      translate(var(--x),var(--y))
+      rotate(calc(var(--r) + 720deg));
+  }
+
+}

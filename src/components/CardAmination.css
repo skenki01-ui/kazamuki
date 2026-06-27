@@ -1,0 +1,364 @@
+.kazamuki-stage {
+  position: relative;
+  min-height: 100vh;
+  padding: 72px 18px 36px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.kazamuki-copy {
+  position: relative;
+  z-index: 5;
+  max-width: 430px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.kazamuki-leaf {
+  font-size: 34px;
+  animation: leafFloat 2.8s ease-in-out infinite;
+}
+
+.kazamuki-theme {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: rgba(248, 244, 230, 0.72);
+}
+
+.kazamuki-copy h2 {
+  margin: 16px 0 0;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.08em;
+}
+
+.kazamuki-copy p {
+  line-height: 1.8;
+}
+
+.kazamuki-copy > p:last-child {
+  margin-top: 14px;
+  font-size: 13px;
+  color: rgba(248, 244, 230, 0.64);
+}
+
+.kazamuki-board {
+  position: relative;
+  width: min(100%, 430px);
+  height: 430px;
+  margin: 20px auto 0;
+}
+
+.wind-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  border: 1px solid rgba(248, 244, 230, 0.12);
+  transform: translate(-50%, -50%);
+  animation: ringBreath 3.6s ease-in-out infinite;
+}
+
+.wind-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(248, 244, 230, 0.35),
+    transparent
+  );
+  opacity: 0;
+}
+
+.wind-line-1 {
+  width: 250px;
+  transform: translate(-50%, -70px) rotate(-8deg);
+}
+
+.wind-line-2 {
+  width: 210px;
+  transform: translate(-50%, 0) rotate(6deg);
+}
+
+.wind-line-3 {
+  width: 260px;
+  transform: translate(-50%, 80px) rotate(-4deg);
+}
+
+.phase-wind .wind-line,
+.phase-spin .wind-line,
+.phase-roulette .wind-line {
+  animation: windPass 1.2s ease-in-out infinite;
+}
+
+.phase-wind .wind-line-2,
+.phase-spin .wind-line-2,
+.phase-roulette .wind-line-2 {
+  animation-delay: 0.22s;
+}
+
+.phase-wind .wind-line-3,
+.phase-spin .wind-line-3,
+.phase-roulette .wind-line-3 {
+  animation-delay: 0.44s;
+}
+
+.wind-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 48px;
+  height: 76px;
+  border-radius: 12px;
+  transform-style: preserve-3d;
+  transition:
+    transform 920ms cubic-bezier(0.18, 0.9, 0.24, 1),
+    opacity 720ms ease,
+    filter 720ms ease;
+}
+
+.wind-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  transform-style: preserve-3d;
+  transition: transform 760ms ease;
+}
+
+.wind-card.front .wind-card-inner {
+  transform: rotateY(0deg);
+}
+
+.wind-card.back .wind-card-inner {
+  transform: rotateY(180deg);
+}
+
+.wind-card-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.48);
+}
+
+.wind-card-front {
+  background:
+    radial-gradient(circle at top, #fff8d9 0%, #e7c77d 64%, #9a6b32 100%);
+  border: 1px solid rgba(255, 244, 204, 0.45);
+  color: #2b2114;
+  text-align: center;
+  padding: 6px;
+}
+
+.wind-card-front strong {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+}
+
+.wind-card-symbol {
+  font-size: 18px;
+}
+
+.wind-card-back {
+  background:
+    linear-gradient(145deg, #24385d 0%, #13213d 58%, #090f1d 100%);
+  border: 1px solid rgba(248, 244, 230, 0.26);
+  color: #f8f4e6;
+  transform: rotateY(180deg);
+}
+
+.wind-card-back span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 244, 230, 0.28);
+  font-size: 16px;
+}
+
+.phase-spin .wind-card {
+  filter: drop-shadow(0 0 10px rgba(255, 244, 204, 0.32));
+}
+
+.phase-shuffle .wind-card {
+  animation: shuffleTap 260ms ease-in-out infinite alternate;
+}
+
+.phase-roulette .wind-card {
+  transition:
+    transform 120ms linear,
+    opacity 120ms linear;
+}
+
+.phase-select .wind-card,
+.phase-result .wind-card {
+  transition:
+    transform 1100ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 900ms ease;
+}
+
+.tap-guide {
+  position: relative;
+  z-index: 6;
+  width: fit-content;
+  margin: -8px auto 0;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: rgba(248, 244, 230, 0.08);
+  border: 1px solid rgba(248, 244, 230, 0.18);
+  color: rgba(248, 244, 230, 0.86);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  animation: tapPulse 1.5s ease-in-out infinite;
+}
+
+.mini-result {
+  position: relative;
+  z-index: 8;
+  max-width: 360px;
+  margin: 8px auto 0;
+  padding: 18px 18px 20px;
+  border-radius: 24px;
+  background: rgba(248, 244, 230, 0.08);
+  border: 1px solid rgba(248, 244, 230, 0.18);
+  text-align: center;
+  animation: resultFade 900ms ease both;
+}
+
+.mini-result p {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(248, 244, 230, 0.72);
+}
+
+.mini-result h3 {
+  margin: 8px 0 10px;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+.mini-result strong {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+@keyframes leafFloat {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateX(8px) rotate(8deg);
+  }
+
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+@keyframes ringBreath {
+  0% {
+    opacity: 0.24;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+
+  50% {
+    opacity: 0.68;
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+
+  100% {
+    opacity: 0.24;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+}
+
+@keyframes windPass {
+  0% {
+    opacity: 0;
+    margin-left: -80px;
+  }
+
+  35% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 0;
+    margin-left: 80px;
+  }
+}
+
+@keyframes shuffleTap {
+  0% {
+    margin-top: -5px;
+  }
+
+  100% {
+    margin-top: 5px;
+  }
+}
+
+@keyframes tapPulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.98);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0.55;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes resultFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 420px) {
+  .kazamuki-stage {
+    padding-top: 70px;
+  }
+
+  .kazamuki-board {
+    height: 390px;
+  }
+
+  .wind-card {
+    width: 42px;
+    height: 68px;
+  }
+
+  .kazamuki-copy h2 {
+    font-size: 20px;
+  }
+}
